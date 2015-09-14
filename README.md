@@ -14,8 +14,7 @@ Widgets created and managed by the Data Reviewer team for use with the Web AppBu
 The Widget Reposistory currently includes:
 
 * [Reviewer Dashboard](./DashBoard/README.md)
-* [Cost Analysis](https://github.com/Esri/solutions-webappbuilder-widgets/blob/CostAnalysis/CostAnalysis/README.md)
-* [GeoEnrich](./GeoEnrich/README.md)
+* [Report Feature](./ReportFeature/README.md)
 
 ## Requirements
 Requires Web AppBuilder for ArcGIS version 1.2
@@ -49,7 +48,7 @@ We allow for 120 characters per line instead of the highly restrictive 80.
 
 ### Branching and Releases
 #### Branches ####
-New widgets should always be created in a separate branch from master. One or more widgets can be contained in a branch. A widget should only be merged with the Master branch if it has been tested is ready to be used with the current released version of Web App Builder - Developer Edition. 
+New widgets should always be created in a separate branch from master. One or more widgets can be contained in a branch. A widget should only be merged with the Master branch if it has been tested is ready to be used with the current released version of Web AppBuilder - Developer Edition. 
 #### Releases ####
 Releases are created for the following reasons:
 - A new version of Web App Builder has been released. The release is used to tag widgets compatible with that release
