@@ -41,7 +41,7 @@ Requires Web AppBuilder for ArcGIS version 1.2
 ## Instructions
 In order to develop and test widgets you need to deploy the ReviewerDashboard directory to the stemapp/widgets directory in your WebApp Builder installation.
 
-## Configuring the Reviewer Dashboard widget
+##Configuring the Reviewer Dashboard widget
 
 Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 
@@ -60,8 +60,8 @@ Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 8.	To set the **Field Name Alias**, use the **Alias** column and double-click the current name, then make your edit.
 9.	Click **OK** to save and close the Reviewer Dashboard widget configuration.
 
-## Using the Reviewer Dashboard widget
-**Dashboard Tab**   
+##Using the Reviewer Dashboard widget
+###**Dashboard Tab**   
 The widget opens with a graphical representation of Dashboard Results with the selected default field displaying. Hover over a segment in the pie chart to view additional details about each attribute property.
 
 You can toggle between two different visualizations of results’ summaries:
@@ -71,7 +71,7 @@ You can toggle between two different visualizations of results’ summaries:
 Pie Chart – Other Category   
 Click on Other to refresh the pie chart to display segments that are greater than the default value set in the original configuration.
 
-**Settings Tab**   
+###**Settings Tab**   
 To view results by a different field, select the radio button next to the Field Name you want to view.
 
 **Filter Results by Geography**   
@@ -82,6 +82,10 @@ You can filter the overall results by geometry in one of four ways:
 3. **Show results for the Census Block Group**—when you click on a census block in the map, the chart will update to display summarized results within that block.
 4. **Use no spatial filter**—clears any spatial filter previously applied to the chart.
 
+**Filter Results by Session**   
+Under the **Settings** tab, you can also filter results by Reviewer Session. Use the drop-down to select either **All Sessions** or the specific session you are interested in viewing from the list of available sessions.
+
+## Resources
 
 ## Issues
 * Find a bug or want to request a new feature?  Please let us know by submitting an issue.
