@@ -8,8 +8,8 @@ The Report Feature widget enables you to collect and manage data quality feedbac
 * [Features](#features)
 * [Requirements](#requirements)
 * [Instructions](#instructions)
-* [Configuring the Report Feature widget][]
-* [Using the Reviewer Dashboard widget][]
+* [Configuring the Report Feature widget]()
+* [Using the Report Feature widget]()
 * [Resources](#resources)
 * [Issues](#issues)
 * [Contributing](#contributing)
@@ -30,7 +30,7 @@ To use the widgets with you should copy any of the widgets to the stemapp/widget
 For more resources on developing modifying widgets please visit
 [Web AppBuilder for ArcGIS Documentation](http://doc.arcgis.com/en/web-appbuilder/)
 
-##Configuring the Report Feature widget
+## Configuring the Report Feature widget
 
 Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 
@@ -52,7 +52,7 @@ The associated sessions in this new URL map service will populate the Default Se
 **Note:** The layer alias value is used only for display purposes in the widget’s UI. The Layer value is used to populate the resourceName attribute of a result.
 8.	Click **OK** to save and close your new configuration of the Report Feature widget.
 
-##Using the Report Feature widget
+## Using the Report Feature widget
 ###**Select Tab**   
 Choose features from a selected map layer to report as an error.
 
