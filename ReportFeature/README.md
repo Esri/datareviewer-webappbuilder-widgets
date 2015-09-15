@@ -39,18 +39,23 @@ Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 3.	Provide the **Data Reviewer for Server URL**, then click **Set**.
 The associated sessions in this new URL map service will populate the Default Session drop-down list.
 4.	Select how the Reviewer Technician attribute of a result is populated. Options for populating this attribute include: 
-  1.	**Logged in Username**óthe active portal username will populate the attribute.
-  2.	**Enter a default value**óa pre-defined value will populate the attribute.
-  3.	**Allow user input**óthe user provides a value during submission.
+  1.	**Logged in Username**‚Äîthe active portal username will populate the attribute.
+  2.	**Enter a default value**‚Äîa pre-defined value will populate the attribute.
+  3.	**Allow user input**‚Äîthe user provides a value during submission.
 5.	Select the Reviewer Session to use as your default session from the drop-down list, then click **OK**.
-
-![Configure Report Feature screenshot](./Screenshots/ReportFeatureConfigurationScreenshot.png)
-
+![Configure Report Feature screenshot](./Screenshots/ReportFeatureConfigurationScreenshot.png)   
 **Note:** The Reviewer result will immediately save to the session you selected as your Default Session.
+
+6.	By default, all layers in the current map are enabled for error reporting in the widget.
+**Note:** To exclude one or more layers, uncheck the check box in the **Include** column.
+7.	To edit a layer‚Äôs **Alias** name, double-click the current **Alias** name and type in a new name. 
+**Note:** The layer alias value is used only for display purposes in the widget‚Äôs UI. The Layer value is used to populate the resourceName attribute of a result.
+8.	Click **OK** to save and close your new configuration of the Report Feature widget.
 
 ##Using the Report Feature widget
 ###**Select Tab**   
 Choose features from a selected map layer to report as an error.
+
 1.	Select a map layer from the drop-down menu.
 2.	Zoom in and click to select a feature to report. The **Details** dialog box opens.
 3.	Select the **Review Status** from one of the following:
@@ -59,18 +64,17 @@ Choose features from a selected map layer to report as an error.
   3.	Move Feature
   4.	Reshape Feature
 4.	Write **Notes**, if any, on the issue.
-5.	Select the **Severity** level of the non-conforming issue with this feature with ì1î being the most severe and ì5î being the least severe
+5.	Select the **Severity** level of the non-conforming issue with this feature with ‚Äú1‚Äù being the most severe and ‚Äú5‚Äù being the least severe
 6.	In the **Reported By** field, type a name for the person who is reporting this issue.   
 **Note:** In some deployments, the **Reported By** field will not display.
 7.	Click **Report**.
-A Report received notification appears indicating that the feedback has been received&mdashclick **OK**. 
+A Report received notification appears indicating that the feedback has been received&mdash;click **OK**. 
 
 ###**Draw Tab**   
-Select a layer to report a missing feature by drawing it in the map. 
+Select a layer to report a missing feature by drawing it in the map.
+
 1.	Select a geometry type from the Draw toolbar options.
-
-![Missing Feature Toolbar screenshot](./Screenshots/ReportFeatureDrawToolbarScreenshot.png)
-
+![Missing Feature Toolbar screenshot](./Screenshots/ReportFeatureDrawToolbarScreenshot.png)   
 2.	Go to the exact location on the map where you want to report your feature, and draw. The **Details** dialog box opens.
 3.	Select the **Review Status** from one of the following:
   1.	Add Feature
@@ -78,12 +82,12 @@ Select a layer to report a missing feature by drawing it in the map.
   3.	Move Feature
   4.	Reshape Feature
 4.	Write **Notes**, if any, on this issue.
-5.	Select the **Severity** level of the non-conforming issue with this feature with ì1î being the most severe and ì5î being the least severe.
+5.	Select the **Severity** level of the non-conforming issue with this feature with ‚Äú1‚Äù being the most severe and ‚Äú5‚Äù being the least severe.
 6.	In the **Reported By** field, type a name for the person who is reporting this issue.   
 **Note:** In some deployments, the **Reported By** field will not display.
 7.	Click **Report**.
 
-A Report received notification appears indicating that the feedback has been received&emdashclick **OK**. 
+A Report received notification appears indicating that the feedback has been received&mdash;click **OK**. 
 
 ## Resources
 
