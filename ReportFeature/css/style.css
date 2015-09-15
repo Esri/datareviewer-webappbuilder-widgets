@@ -1,0 +1,47 @@
+.drs-widget-report-feature .report-feature-content{
+  position: relative;
+  width:100%;
+  height:100%;
+}
+.drs-widget-report-feature>.jimu-tab>.control{
+  margin:-14px -14px 24px -14px;
+}
+.drs-widget-report-feature .drs-loading-features {
+  background: url('../images/loading.gif') no-repeat left center;
+  padding-left: 20px;
+}
+
+.drs-info-window-form .drs-input-err {
+  border-color: #f00;
+}
+
+.drs-info-window-form label {
+  display: block;
+  margin-top: 1em;
+}
+
+.drs-info-window-form .drs-buttons {
+  margin-top: 1em;
+}
+
+.drs-info-window-form textarea.jimu-input {
+  width: 100%;
+}
+.drs-widget-report-feature .select-tab-node{
+  position: absolute !important;
+  width: 100% !important;
+  height: auto !important;
+  top:0 !important;
+  bottom: 0 !important;
+}
+.TabTheme .drs-widget-report-feature .jimu-tab>.control>.tab.jimu-state-selected{
+  border-top: 0;
+}
+.drs-widget-report-feature .jimu-widget-frame.jimu-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    position: relative;
+    padding: 0px 0px 14px 0px;
+    background-color: white;
+
+}
