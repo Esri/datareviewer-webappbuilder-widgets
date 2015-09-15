@@ -65,19 +65,29 @@ Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 8.	To set the **Field Name Alias**, use the **Alias** column and double-click the current name, then make your edit.
 9.	Click **OK** to save and close the Reviewer Dashboard widget configuration.
 
+![Configure Dashboard screenshot](./Screenshots/ConfigScreen.png)
+
 ##Using the Reviewer Dashboard widget
 ###**Dashboard Tab**   
 The widget opens with a graphical representation of Dashboard Results with the selected default field displaying. Hover over a segment in the pie chart to view additional details about each attribute property.
+
+![Dashboard Infographic screenshot](./Screenshots/DashboardScreen.jpg)
 
 You can toggle between two different visualizations of results’ summaries:
 * Pie chart
 * Bar graph
 
+![Dashboard Infographic Toggle screenshot](./Screenshots/BarScreen.jpg)
+
 Pie Chart – Other Category   
 Click on Other to refresh the pie chart to display segments that are greater than the default value set in the original configuration.
 
+![Dashboard Other Category screenshot](./Screenshots/DashboardOtherScreen.png)
+
 ###**Settings Tab**   
 To view results by a different field, select the radio button next to the Field Name you want to view.
+
+![Dashboard Settings Tab screenshot](./Screenshots/ResultsScreen.png)
 
 **Filter Results by Geography**   
 You can filter the overall results by geometry in one of four ways:
@@ -90,6 +100,7 @@ You can filter the overall results by geometry in one of four ways:
 **Filter Results by Session**   
 Under the **Settings** tab, you can also filter results by Reviewer Session. Use the drop-down to select either **All Sessions** or the specific session you are interested in viewing from the list of available sessions.
 
+![Dashboard Session Filter screenshot](./Screenshots/SessionsScreen.jpg)
 ## Resources
 
 ## Issues
