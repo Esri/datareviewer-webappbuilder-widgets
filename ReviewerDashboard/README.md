@@ -39,7 +39,12 @@ If there are custom fields defined for your results, they will automatically be 
 Requires Web AppBuilder for ArcGIS version 1.2
 
 ## Instructions
-In order to develop and test widgets you need to deploy the ReviewerDashboard directory to the stemapp/widgets directory in your WebApp Builder installation.
+Deploying Widgets.
+
+To use the widgets with you should copy any of the widgets to the stemapp/widget directory. This is located in %webappbuilder_install%/client directory.
+
+For more resources on developing modifying widgets please visit
+[Web AppBuilder for ArcGIS Documentation](http://doc.arcgis.com/en/web-appbuilder/)
 
 ##Configuring the Reviewer Dashboard widget
 
