@@ -1,5 +1,6 @@
 # Reviewer Dashboard widget
 The Reviewer Dashboard widget for Web AppBuilder works with the ArcGIS Data Reviewer for Server extension.
+
 The Dashboard widget displays data quality result statistics as infographics—pie and bar charts—to summarize data quality issues identified in your GIS data. The statistics represent total counts of results summarized by a field that allows you to understand the number and type of results present in your data.
 
 The widget supports both spatial and attribute-based filtering of results. This allows you to visualize result statistics by a specific area and attribute. You can spatially filter results by:
