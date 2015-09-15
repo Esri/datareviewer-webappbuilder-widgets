@@ -126,7 +126,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 A copy of the license is available in the repository's
-[license.txt](license.txt) file.
+[license.txt](../LICENSE) file.
 
 [](Esri Tags: Data Quality Control Data Reviewer)
 [](Esri Language: Javascript)
