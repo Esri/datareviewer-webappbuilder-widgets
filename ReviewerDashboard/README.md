@@ -24,8 +24,8 @@ If there are custom fields defined for your results, they will automatically be 
 * [Features](#features)
 * [Requirements](#requirements)
 * [Instructions](#instructions)
-* [Configuring the Reviewer Dashboard widget](#Configuring the Reviewer Dashboard widget)
-* [Using the Reviewer Dashboard widget](#using)
+* [Configuring the Reviewer Dashboard widget]()
+* [Using the Reviewer Dashboard widget]()
 * [Resources](#resources)
 * [Issues](#issues)
 * [Contributing](#contributing)
@@ -39,14 +39,14 @@ If there are custom fields defined for your results, they will automatically be 
 Requires Web AppBuilder for ArcGIS version 1.2
 
 ## Instructions
-Deploying Widgets.
+Deploying Widgets
 
 To use the widgets with you should copy any of the widgets to the stemapp/widget directory. This is located in %webappbuilder_install%/client directory.
 
 For more resources on developing modifying widgets please visit
 [Web AppBuilder for ArcGIS Documentation](http://doc.arcgis.com/en/web-appbuilder/)
 
-##Configuring the Reviewer Dashboard widget
+## Configuring the Reviewer Dashboard widget
 
 Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 
@@ -67,7 +67,7 @@ Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 
 ![Configure Dashboard screenshot](./Screenshots/ConfigScreen.png)
 
-##Using the Reviewer Dashboard widget
+## Using the Reviewer Dashboard widget
 ###**Dashboard Tab**   
 The widget opens with a graphical representation of Dashboard Results with the selected default field displaying. Hover over a segment in the pie chart to view additional details about each attribute property.
 
@@ -109,9 +109,8 @@ Under the **Settings** tab, you can also filter results by Reviewer Session. Use
 ## Contributing
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
-
 ## Licensing
-Copyright 2013 Esri
+Copyright 2015 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
