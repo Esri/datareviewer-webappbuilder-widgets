@@ -13,7 +13,7 @@ Widgets created and managed by the Data Reviewer team for use with the Web AppBu
 ## Features
 The Widget Reposistory currently includes:
 
-* [Reviewer Dashboard](./DashBoard/README.md)
+* [Reviewer Dashboard](./ReviewerDashboard/README.md)
 * [Report Feature](./ReportFeature/README.md)
 
 ## Requirements
