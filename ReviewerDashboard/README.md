@@ -51,18 +51,26 @@ For more resources on developing modifying widgets please visit
 Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 
 1.	Click the pen in the corner of the Reviewer Dashboard icon to begin a configuration session.
+
 2.	To change the icon, click the **change widget** icon button and replace it with your own image. A file explorer window opens, allowing you to select a local image file to use as the widget icon.
+
 3.	Provide the Data Reviewer for Server SOE URL, then click **Set**.
+
 4.	Type the number of segments to display in the pie chart graphical representation of results summaries.   
    **Note**: The maximum number of segments is 10 and the default is 5. If there are more than 10, a category called **Other** will contain the additional results data and will display in the drill-down view.
+
 5.	The **Include filter by geography** checkbox is selected by default in the widget. 
   1.	If you want to keep the default setting and filter by geography, either enter a new URL in the **Service for filter by geography** text box for the map service, or keep the current (default) URL. 
   2.	Since the map service must contain a polygon layer to filter Reviewer results, enter the layer in the **Service layer for filter by geography** text box.
   3.	Provide a URL to a geometry service in the **Geometry service URL** text box.
   4.	Alternatively, you remove the filtering by geography behavior completely from the widget by unchecking the **Include filter by geography** check box.
+
 6.	To have the pie chart open with a certain field, click the radio button in the **Default** column that corresponds to the Dashboard Field Name, then click OK.
+
 7.	To set the visibility of a field, use the checkbox in the **Visible** column next to its **Dashboard Field Name**.
+
 8.	To set the **Field Name Alias**, use the **Alias** column and double-click the current name, then make your edit.
+
 9.	Click **OK** to save and close the Reviewer Dashboard widget configuration.
 
 ![Configure Dashboard screenshot](./Screenshots/ConfigScreen.png)
@@ -93,8 +101,11 @@ To view results by a different field, select the radio button next to the Field 
 You can filter the overall results by geometry in one of four ways:
 
 1. **Draw a selection area on the map**—restrains display to results found only within that selection.
+
 2. **Show results in the current map extent**—chart will update to display summarized results in the current map view.
+
 3. **Show results for the Census Block Group**—when you click on a census block in the map, the chart will update to display summarized results within that block.
+
 4. **Use no spatial filter**—clears any spatial filter previously applied to the chart.
 
 **Filter Results by Session**   
