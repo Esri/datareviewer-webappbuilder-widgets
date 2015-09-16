@@ -35,21 +35,27 @@ For more resources on developing modifying widgets please visit
 Use Web AppBuilder for ArcGIS to configure the Reviewer Dashboard Widget.
 
 1.	Click the pen in the bottom-right corner of the Report Feature icon to begin a configuration session.
+
 2.	To change the Report Feature icon, click the **change widget icon* button and replace it with your own image. A file explorer window opens, allowing you to select a local image file to use as the widget icon.
+
 3.	Provide the **Data Reviewer for Server URL**, then click **Set**.
 The associated sessions in this new URL map service will populate the Default Session drop-down list.
+
 4.	Select how the Reviewer Technician attribute of a result is populated. Options for populating this attribute include: 
   1.	**Logged in Username**—the active portal username will populate the attribute.
   2.	**Enter a default value**—a pre-defined value will populate the attribute.
   3.	**Allow user input**—the user provides a value during submission.
+
 5.	Select the Reviewer Session to use as your default session from the drop-down list, then click **OK**.
 ![Configure Report Feature screenshot](./Screenshots/ReportFeatureConfigurationScreenshot.png)   
 **Note:** The Reviewer result will immediately save to the session you selected as your Default Session.
 
 6.	By default, all layers in the current map are enabled for error reporting in the widget.
 **Note:** To exclude one or more layers, uncheck the check box in the **Include** column.
+
 7.	To edit a layer’s **Alias** name, double-click the current **Alias** name and type in a new name. 
 **Note:** The layer alias value is used only for display purposes in the widget’s UI. The Layer value is used to populate the resourceName attribute of a result.
+
 8.	Click **OK** to save and close your new configuration of the Report Feature widget.
 
 ## Using the Report Feature widget
