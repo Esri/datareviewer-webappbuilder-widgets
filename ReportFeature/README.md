@@ -88,7 +88,6 @@ Select a layer to report a missing feature by drawing it in the map.
 
 1.	Select a geometry type from the Draw toolbar options.
 
-![Missing Feature Toolbar screenshot](./Screenshots/ReportFeatureDrawToolbarScreenshot.png)   
 2.	Go to the exact location on the map where you want to report your feature, and draw. The **Details** dialog box opens.
 
 3.	Select the **Review Status** from one of the following:
