@@ -63,17 +63,24 @@ The associated sessions in this new URL map service will populate the Default Se
 Choose features from a selected map layer to report as an error.
 
 1.	Select a map layer from the drop-down menu.
+
 2.	Zoom in and click to select a feature to report. The **Details** dialog box opens.
+
 3.	Select the **Review Status** from one of the following:
   1.	Add Feature
   2.	Delete Feature
   3.	Move Feature
   4.	Reshape Feature
+
 4.	Write **Notes**, if any, on the issue.
+
 5.	Select the **Severity** level of the non-conforming issue with this feature with “1” being the most severe and “5” being the least severe
+
 6.	In the **Reported By** field, type a name for the person who is reporting this issue.   
 **Note:** In some deployments, the **Reported By** field will not display.
+
 7.	Click **Report**.
+
 A Report received notification appears indicating that the feedback has been received&mdash;click **OK**. 
 
 ###**Draw Tab**   
@@ -82,17 +89,21 @@ Select a layer to report a missing feature by drawing it in the map.
 1.	Select a geometry type from the Draw toolbar options.
 
 ![Missing Feature Toolbar screenshot](./Screenshots/ReportFeatureDrawToolbarScreenshot.png)   
-
 2.	Go to the exact location on the map where you want to report your feature, and draw. The **Details** dialog box opens.
+
 3.	Select the **Review Status** from one of the following:
   1.	Add Feature
   2.	Delete Feature
   3.	Move Feature
   4.	Reshape Feature
+
 4.	Write **Notes**, if any, on this issue.
+
 5.	Select the **Severity** level of the non-conforming issue with this feature with “1” being the most severe and “5” being the least severe.
+
 6.	In the **Reported By** field, type a name for the person who is reporting this issue.   
 **Note:** In some deployments, the **Reported By** field will not display.
+
 7.	Click **Report**.
 
 A Report received notification appears indicating that the feedback has been received&mdash;click **OK**. 
