@@ -1,8 +1,6 @@
 define({
   root: {
     drsUrl: "Data Revierwer Server URL",
-    layerIds: "Layer IDs",
-    layerNames: "Layer Names",
     includeReportedBy: "Reviewer Technician",
     label: "Layer",
     show: "Include",
@@ -15,6 +13,8 @@ define({
     getDefaultUser: "Enter a default value",
     getUser: "Allow user input",
     userName:"Enter Username",
-    noUserName: "Please enter default username."
+    noUserName: "Please enter default username.",
+    noLayers: "No operational layers in the web map.",
+    noSessionName:"Please select a Session"
   }
 });

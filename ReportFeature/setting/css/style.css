@@ -12,9 +12,7 @@
 
 .drs-widget-report-feature-setting .input-table > tbody > tr > .first{
   width:auto;
-  text-align: left;
-  padding-right:10px;
-}
+ }
 
 .drs-widget-report-feature-setting .input-table > tbody > tr > .second{
     width:120px;
@@ -25,6 +23,5 @@
 }
 .drs-widget-report-feature-setting .revTechnician-item{
   display: inline-block;
-  margin-right: 20px;
   vertical-align: middle;
 }

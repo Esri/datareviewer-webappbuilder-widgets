@@ -27,8 +27,11 @@ define({
         errorReportMessage: 'There was an error reporting your feature',
         drawErrorInstructions: 'Select point, line or polygon and draw the error geometry on the map:',
         errorMapService: 'There was an error getting map service information',
-        noFeatureSelected : 'There were no features found at the clicked location'
+        noFeatureSelected : 'There were no features found at the clicked location',
+        selectFeatureMapPoint: 'Click to select a feature',
+        drawFeatureMapPoint: 'Click to add a point',
+        popupMessage:'Message',
+        popupError:'Error',
+        manyFeaturesSelected: 'More than one feature found. Please zoom in and select a feature to report.'
     }
-    // TODO: add supported locales below:
-    // , "zh-cn": true
 });
