@@ -1,6 +1,5 @@
-
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 Esri. All Rights Reserved.
+// Copyright © 2015 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,11 +24,12 @@ define(
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleFillSymbol",
     "esri/request",
+    "esri/main",
     "esri/layers/LayerDrawingOptions",
     "esri/renderers/UniqueValueRenderer"
   ],
 function (declare, array, lang, Color, Deferred, SimpleMarkerSymbol,
-SimpleLineSymbol, SimpleFillSymbol, esriRequest, LayerDrawingOptions,
+SimpleLineSymbol, SimpleFillSymbol, esriRequest, esri, LayerDrawingOptions,
 UniqueValueRenderer) {
 return declare(null,
     {
@@ -142,7 +142,7 @@ return declare(null,
       useDefaultColorForMissingValues) {
       var deferred = new Deferred();
       if (!dashboardResult) {
-        return null;
+        return deferred;
       }
       var revServiceLayerURL = this._reviewerMapServerUrl + '/0';
       if (this._fieldQualifier !== null) {
