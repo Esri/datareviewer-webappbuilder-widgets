@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 Esri. All Rights Reserved.
+// Copyright © 2015 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -39,22 +39,21 @@ define([
     "esri/layers/FeatureLayer",
     "esri/geometry/Polygon",
     "esri/toolbars/draw",
-    "dijit/form/Select",
     "dojo/dom",
     "dojox/charting/Chart",
     "dojox/charting/plot2d/Bars",
-    "dojox/charting/axis2d/Default",
     "dojox/charting/plot2d/Pie",
     "dojox/charting/action2d/Tooltip",
     "dojox/charting/action2d/MoveSlice",
     "dojo/dom-class", "dijit/Dialog",
+    "dojox/charting/axis2d/Default",
     "dijit/form/RadioButton"
   ],
   function(declare, on, query, lang, array, html, _WidgetsInTemplateMixin, BaseWidget,
   DashboardTask, ReviewerFilters, ReviewerMapHelper, ReviewerResultsTask, DashboardResult,
   ReviewerLifecycle, TabContainer, Graphic, ArcGISDynamicMapServiceLayer, GeometryService,
-  SimpleFillSymbol, Query, QueryTask, Extent, FeatureLayer, Polygon, Draw, Select,
- dom, Chart, Bars, Default, Pie, Tooltip, MoveSlice, domClass, Dialog ) {
+  SimpleFillSymbol, Query, QueryTask, Extent, FeatureLayer, Polygon, Draw,
+ dom, Chart, Bars, Pie, Tooltip, MoveSlice, domClass, Dialog ) {
   return declare([BaseWidget, _WidgetsInTemplateMixin], {
     baseClass: 'drs-widget-dashboard',
     name: 'Dashboard',
@@ -446,7 +445,7 @@ define([
               this._updateChart(null, this.layerDrawingOptions);
             }
             else{
-               this.layerDrawingOptions = args.layerDrawingOptions;
+              this.layerDrawingOptions = args.layerDrawingOptions;
               this._createCharts(result, args.layerDrawingOptions, fieldName);
             }
             if (changeLayerDrawingOption){

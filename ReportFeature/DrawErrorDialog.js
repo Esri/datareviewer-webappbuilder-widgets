@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 Esri. All Rights Reserved.
+// Copyright © 2015 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,6 +22,8 @@ define([
   'dojo/dom-style',
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
+  'dojo/query',
+  'dojo/i18n!esri/nls/jsapi',
   'esri/symbols/SimpleMarkerSymbol',
   'esri/symbols/SimpleLineSymbol',
   'esri/symbols/SimpleFillSymbol',
@@ -31,7 +33,7 @@ define([
   'dojo/text!./DrawErrorDialog.html'
 ], function(
   declare, array, on, string, domConstruct, domStyle,
-  _WidgetBase, _TemplatedMixin,
+  _WidgetBase, _TemplatedMixin, query, esriBundle,
   SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Polygon,
   ReviewerResultsTask, InfoWindowContent, template
 ) {
@@ -110,7 +112,7 @@ define([
     _initEvents: function() {
       var _this = this;
       this.own(on(this.selectLayer, 'change', function(e) {
-        esri.bundle.toolbars.draw.addPoint = "click to add a point";
+        esriBundle.toolbars.draw.addPoint = _this.nls.drawFeatureMapPoint;
         var val = e.target.value;
         if (val) {
           _this.startDrawing();
@@ -119,6 +121,10 @@ define([
         }
       }));
       this.own(on(this.map.infoWindow, 'hide', function() {
+        var zoomNode = query('.actionsPane');
+        if(zoomNode !== undefined && zoomNode !== null && zoomNode.length > 0){
+          zoomNode[0].style.display = '';
+        }
         _this.emit('InfoWindowHide');
       }));
       this.own(on(this.drawBox, 'DrawEnd', function(graphic, geotype, commontype) {
@@ -195,6 +201,8 @@ define([
         on.once(this.map.infoWindow, 'hide', function() {
           _this.map.setInfoWindowOnClick(false);
         });
+        this.map.infoWindow.destroyDijits();
+        query('.actionsPane')[0].style.display = 'none';
         this.map.infoWindow.setContent(this.infoWindowContent.domNode);
         this.map.infoWindow.resize(300, 600);
         this.map.infoWindow.show(point);
@@ -219,15 +227,15 @@ define([
     // Show message on completion of writeFeatureAsResult
     _onWriteResultComplete: function(result) {
       if (result && result.success) {
-        this.emit('Message', {}, ['', this.nls.reportMessage]);
+        this.emit(this.nls.popupMessage, {}, ['', this.nls.reportMessage]);
       } else {
-        this.emit('Error', {} [this.nls.errorReportMessage]);
+        this.emit(this.nls.popupError, {} [this.nls.errorReportMessage]);
       }
     },
 
     // Show error message if writeFeatureAsResult fails
     _onWriteResultError: function(err) {
-      this.emit('Error', {}, [err.message, err]);
+      this.emit(this.nls.popupError, {}, [err.message, err]);
     },
 
     destroy: function() {
@@ -265,7 +273,7 @@ define([
     // read layers from config into
     // a document fragment consisting of options
     getLayerOptions: function() {
-     var html = '';
+      var html = '';
       array.forEach(this.config.layers, function(layer) {
         if (layer.show === true){
           html = html  + string.substitute('<option value="${id}">${alias}</option>', layer);

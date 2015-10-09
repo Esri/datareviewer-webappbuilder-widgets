@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 Esri. All Rights Reserved.
+// Copyright © 2015 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,6 +23,9 @@ define([
   'dojo/dom-style',
   'dijit/_WidgetBase',
   'dijit/_TemplatedMixin',
+  'dojo/query',
+  'dojo/i18n!esri/nls/jsapi',
+  'esri/main',
   'esri/layers/FeatureLayer',
   'esri/toolbars/draw',
   'esri/tasks/IdentifyTask',
@@ -37,7 +40,7 @@ define([
   'dojo/text!./SelectFeatureDialog.html'
 ], function(
   declare, array, lang, on, string, domConstruct, domStyle,
-  _WidgetBase, _TemplatedMixin, FeatureLayer, Draw,
+  _WidgetBase, _TemplatedMixin, query, esriBundle, esri, FeatureLayer, Draw,
   IdentifyTask, Query, IdentifyParameters, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol,
   Extent, ReviewerResultsTask,
   InfoWindowContent,
@@ -102,7 +105,7 @@ define([
       this.selectionToolbar = new Draw(this.map);
       this.selectionToolbar.on("draw-end", lang.hitch(this, this.addGraphic));
       this.own(on(this.selectLayer, 'change', function(e) {
-        esri.bundle.toolbars.draw.addPoint = "Click to select a feature";
+        esriBundle.toolbars.draw.addPoint = _this.nls.selectFeatureMapPoint;
         var val = e.target.value;
         if (val) {
           _this.startSelectFeature(val);
@@ -112,6 +115,10 @@ define([
       }));
 
       this.own(on(this.map.infoWindow, 'hide', function() {
+        var zoomNode = query('.actionsPane');
+        if(zoomNode !== undefined && zoomNode !== null && zoomNode.length > 0){
+          zoomNode[0].style.display = '';
+        }
         _this.emit('InfoWindowHide');
       }));
 
@@ -155,19 +162,25 @@ define([
         this.featureLayer = new FeatureLayer(layer[0].url, {outFields: ["*"],
         mode: esri.layers.FeatureLayer.MODE_SELECTION});
         var selectQuery = new Query();
-        selectQuery.tolerance = 3;
-        var factor = 1;
-        var extent = new Extent(geometry.x - factor, geometry.y - factor,
-        geometry.x + factor, geometry.y + factor, this.map.spatialReference);
+        var pixelWidth = this.map.extent.getWidth() / this.map.width;
+        var toleranceInMapCoords = 10 * pixelWidth;
+        var extent = new Extent(geometry.x - toleranceInMapCoords,
+                            geometry.y - toleranceInMapCoords,
+                            geometry.x + toleranceInMapCoords,
+                            geometry.y + toleranceInMapCoords,
+                            this.map.spatialReference);
         selectQuery.geometry = extent;
         this.featureLayer.selectFeatures(selectQuery,
         FeatureLayer.SELECTION_NEW, lang.hitch(this, function(features){
-          if (features.length > 0){
+          if (features.length > 1){
+            this.emit(this.nls.popupMessage, {}, [this.nls.manyFeaturesSelected]);
+          }
+          else if(features.length === 1){
             this.selectionToolbar.deactivate();
             this._onTaskComplete(features[0]);
           }
           else{
-            this.emit('Message', {}, [this.nls.noFeatureSelected]);
+            this.emit(this.nls.popupMessage, {}, [this.nls.noFeatureSelected]);
           }
         }));
       }
@@ -194,7 +207,6 @@ define([
       this.identifying = true;
       domStyle.set(this.loadingFeaturesNode, 'display', '');
       identifyParams.returnGeometry = true;
-      identifyParams.tolerance = 3;
       identifyParams.width = this.map.width;
       identifyParams.height = this.map.height;
       identifyParams.geometry = mapPoint;
@@ -208,7 +220,7 @@ define([
         else{
           domStyle.set(_this.loadingFeaturesNode, 'display', 'none');
           _this.identifying = false;
-          this.emit('Message', {}, [this.nls.noFeatureSelected]);
+          this.emit(this.nls.popupMessage, {}, [this.nls.noFeatureSelected]);
         }
       }, function(err) {
         _this._onIdentifyError(err);
@@ -250,7 +262,7 @@ define([
         case 'polygon':
           resultGraphic.setSymbol(symbolPolygon);
           point = resultGraphic.geometry.getCentroid();
-          def = this.map.setExtent(resultGraphic.geometry.getExtent().expand(1.5));
+          def = this.map.centerAt(point);
           break;
       }
       // this.map.graphics.add(resultGraphic);
@@ -270,6 +282,7 @@ define([
           _this.submitReport(reviewerAttributes);
         }
       }, domConstruct.create('div'));
+
       this.map.infoWindow.setTitle(this.nls.infoWindowTitle);
       this.infoWindowContent.startup();
       this.infoWindowContent.set('layerName', layerName);
@@ -278,6 +291,8 @@ define([
         _this.selectionToolbar.activate(Draw.POINT);
         _this.map.setInfoWindowOnClick(false);
       });
+      this.map.infoWindow.destroyDijits();
+      query('.actionsPane')[0].style.display = 'none';
       this.map.infoWindow.setContent(this.infoWindowContent.domNode);
       this.map.infoWindow.resize(300, 600);
       this.map.infoWindow.show(point);
@@ -290,7 +305,7 @@ define([
     _onIdentifyError: function(err) {
       this.identifying = false;
       domStyle.set(this.loadingFeaturesNode, 'display', 'none');
-      this.emit('Error', {}, [this.nls.errorIdentify, err]);
+      this.emit(this.nls.popupError, {}, [this.nls.errorIdentify, err]);
     },
 
     // Write selected feature as a Data Reviewer result
@@ -310,17 +325,17 @@ define([
     // Show message on completion of writeFeatureAsResult
     _onWriteFeatureAsResultComplete: function(result) {
       if (result && result.success) {
-        this.emit('Message', {}, ['', this.nls.reportMessage]);
+        this.emit(this.nls.popupMessage, {}, ['', this.nls.reportMessage]);
         this.selectionToolbar.activate(Draw.POINT);
       } else {
-        this.emit('Error', {} [this.nls.errorReportMessage]);
+        this.emit(this.nls.popupError, {} [this.nls.errorReportMessage]);
       }
     },
 
     // Show error message if writeFeatureAsResult fails
     _onWriteFeatureAsResultError: function(err) {
       this.selectionToolbar.activate(Draw.POINT);
-      this.emit('Error', {}, [err.message, err]);
+      this.emit(this.nls.popupError, {}, [err.message, err]);
     },
 
     // reset form

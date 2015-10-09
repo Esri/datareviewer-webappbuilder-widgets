@@ -52,12 +52,6 @@
   float:left;
   height:100%;
 }
-
-.drs-widget-dashboard .paging-section{
-  float:right;
-  height:100%;
-}
-
 .drs-widget-dashboard .paging-section ul{
   margin:0;
   padding:0;
@@ -97,17 +91,11 @@
   height:100%;
   top:0;
 }
-
-.drs-widget-dashboard .chart-section .chart-container{
-//  left:5%;
-  width:78%;
-  margin:0 auto;
-}
-.TabTheme .drs-widget-dashboard .jimu-tab>.control>.tab.jimu-state-selected{
+.drs-widget-dashboard .TabTheme  .jimu-tab>.control>.tab.jimu-state-selected{
   border-top: 0;
 }
 
-input[type="radio"] {
+.drs-widget-dashboard input[type="radio"] {
   margin-right: 10;
   margin-bottom: 20;
   margin-left: 20;
@@ -130,7 +118,6 @@ list-style-type: none;
 #filterContainer a
 {
   display: block;
-  background-color: white;
   padding: 2px 4px;
   margin: -1px 0 0 0px;
   width: 100%;
@@ -141,14 +128,14 @@ list-style-type: none;
 
 #filterContainer a:hover 
 {
-  background-color: #EEEEEE;
+  /*background-color: #EEEEEE;*/
   width: 100%;
   height: 100%;
 }
 
 #filterContainer li a.current {
   /*background-color: #e2f6ff;*/
-  background-color: #d9dde0;
+  background-color: #d3d3d3;
   padding: 2px 4px;
   margin: -1px 0 0 0px;
   width: 100%;
@@ -157,36 +144,46 @@ list-style-type: none;
 }
 
 #filterContainer li a.current:hover {
-background-color: #d9dde0;
+/*background-color: #d9dde0;*/
 }
 
 #filterContainer li.selected a:active {
  background: #e2f6ff !important;
 }
 
-.spatialFilterLabel{
+.drs-widget-dashboard .spatialFilterLabel{
   margin: 6px 4px;
 }
 
-.sectionHeading{
+.drs-widget-dashboard .sectionHeading{
   margin: 5px 0px;
   font-weight: bold;
   color: #82878B;
   border-bottom:1px solid #D4E5F7;
 }
 
-.radioButtonLabel{
+.drs-widget-dashboard .radioButtonLabel{
   margin:6px 5px !important;
 }
-body {
+.drs-widget-dashboard body {
 font: 12px Myriad,Helvetica,Tahoma,Arial,clean,sans-serif;
 }
 
 .drs-widget-dashboard .chart-section {
- // margin-left: -20px;
+  margin-top: -11px;
 }
-.mainChartContainer{
-  margin-top: -15px;
-  margin-left: 30px;
-  position: fixed;
+.drs-widget-dashboard .mainChartContainer{
+  direction: ltr;
+}
+.drs-widget-dashboard .chart-section .chart-container {
+  margin: 0 auto;
+  width: 78%;
+}
+.drs-widget-dashboard .paging-section {
+  float: right;
+  height: 100%;
+}
+[dir=rtl] .drs-widget-dashboard .paging-section {
+  float: left;
+  height: 100%;
 }

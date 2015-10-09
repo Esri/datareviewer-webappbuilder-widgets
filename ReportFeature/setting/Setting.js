@@ -1,3 +1,18 @@
+///////////////////////////////////////////////////////////////////////////
+// Copyright © 2015 Esri. All Rights Reserved.
+//
+// Licensed under the Apache License Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+///////////////////////////////////////////////////////////////////////////
 define([
     'dojo/_base/declare',
     'dojo/_base/array',
@@ -8,19 +23,34 @@ define([
     'dojo/_base/html',
     'dojo/query',
     'dojo/on',
+    'dijit/registry',
     'esri/tasks/datareviewer/ReviewerResultsTask',
     'jimu/dijit/Message',
+    'dojo/dom-style',
     'dijit/form/ValidationTextBox',
-    'dijit/form/RadioButton'
+    'jimu/dijit/RadioBtn'
   ],
   function(
     declare, array, lang,
     _WidgetsInTemplateMixin,
-    BaseWidgetSetting, Table, html, query , on, ReviewerResultsTask, Message) {
+    BaseWidgetSetting, Table, html, query, on, registry, ReviewerResultsTask, Message, domStyle) {
     return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
       baseClass: 'drs-widget-report-feature-setting',
       includeUserBy:'',
       defaultUserName:'',
+      selectedUserType:'',
+      postCreate: function(){
+        this.own(on(this.currentUser, 'click', lang.hitch(this, function() {
+          this._setRadioItem(this.currentUser);
+        })));
+        this.own(on(this.userName, 'click', lang.hitch(this, function() {
+          this._setRadioItem(this.userName);
+          //html.setStyle(this.rulerNode, 'display', 'none');
+        })));
+        this.own(on(this.userInput, 'click', lang.hitch(this, function() {
+          this._setRadioItem(this.userInput);
+        })));
+      },
       startup: function() {
         this.inherited(arguments);
         if (!this.config.layers) {
@@ -64,7 +94,7 @@ define([
         }
         ];
         this._setUserNameVisibility(false);
-        on(this.defaultUser, "change", lang.hitch(this, this._setUserNameVisibility));
+        //on(this.defaultUser, "change", lang.hitch(this, this._setUserNameVisibility));
         var args = {
           fields: fields,
           selectable: true
@@ -102,27 +132,31 @@ define([
       },
       setConfig: function(config) {
         this.config = config;
-        var layerIds = [];
-        var layerNames = [];
         this.populateSessionNames(this.config.drsUrl);
         if (config.drsUrl) {
           this.drsUrl.set('value', config.drsUrl);
         }
-        array.forEach(config.layers, function(layer) {
-          layerIds.push(layer.id);
-          layerNames.push(layer.label || layer.id);
-        });
-        if (config.includeReportedBy === "" || config.includeReportedBy === "logon") {
-          this.currentLogin.set('checked', true);
+        if (config.includeReportedBy === "" || config.includeReportedBy === "logon" ||
+          config.includeReportedBy === undefined) {
+          this._setRadioItem(this.currentUser);
+          //this.currentLogin.set('checked', true);
         }
         else if (config.includeReportedBy === "default"){
-          this.defaultUser.set('checked', true);
+          //this.defaultUser.set('checked', true);
+          this._setRadioItem(this.userName);
           this.defaultUserName.set('value', config.defaultUserName);
         }
         else if (config.includeReportedBy === "user"){
-          this.allowUser.set('checked', true);
+          this._setRadioItem(this.userInput);
+          //this.allowUser.set('checked', true);
         }
         var operationallayers = this.map.itemInfo.itemData.operationalLayers;
+        if (operationallayers.length <= 0){
+          domStyle.set(this.tableNoLayersError, "display", "");
+          this.tableNoLayersError.innerHTML = this.nls.noLayers;
+        } else {
+          domStyle.set(this.tableNoLayersError, "display", "none");
+        }
         for (var i = 0; i < operationallayers.length; i++) {
           var layer = operationallayers[i];
           if (layer.hasOwnProperty("url") && layer.url.indexOf("MapServer") > 0 ||
@@ -178,7 +212,18 @@ define([
         }
         return "";
       },
+      _setRadioItem: function(parentNode) {
+        var _radio = registry.byNode(query('.jimu-radio', parentNode)[0]);
+        _radio.check(true);
+        this.selectedUserType = _radio.value;
+        if (_radio.value === "default"){
+          this._setUserNameVisibility(true);
+        }
+        else{
+          this._setUserNameVisibility(false);
+        }
 
+      },
       // check that user supplied required fields
       // (DRS url and layer ids)
       // build array of layer objects from the strings
@@ -190,6 +235,13 @@ define([
           return false;
         }
         this.config.drsUrl = this.drsUrl.value;
+        if (this.defaultSessionSelect.value === "" ||
+          this.defaultSessionSelect.value === undefined){
+          new Message({
+            message: this.nls.noSessionName
+          });
+          return false;
+        }
         this.config.sessionID = this.defaultSessionSelect.value;
         var data = this.displayFieldsTable.getData();
         //var len = this.featurelayers.length;
@@ -208,19 +260,13 @@ define([
           layerInfos.push(layer);
         }
         this.config.layers = layerInfos;
-        var radioOption;
-        query('[name=\"UserName\"]').forEach(function(radio) {
-          if(radio.checked) {
-            radioOption = radio.value;
-          }
-        });
-        if (radioOption === "default" && this.defaultUserName.value === ""){
+        if (this.selectedUserType === "default" && this.defaultUserName.value === ""){
           new Message({
             message: this.nls.noUserName
           });
           return false;
         }
-        this.config.includeReportedBy = radioOption;
+        this.config.includeReportedBy = this.selectedUserType;
         this.config.defaultUserName = this.defaultUserName.value;
         return this.config;
       }

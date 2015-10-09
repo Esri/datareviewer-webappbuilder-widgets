@@ -1,5 +1,6 @@
 define({
-  root:({
+  root: ({
+    _widgetLabel: "Reviewer Dashboard",
     spatialFilterSelection: "Filter results by geography",
     drawSelectionArea: "Draw a result selection area on the map",
     currentSelection:"Show results only in current map extent",

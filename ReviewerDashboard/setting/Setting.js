@@ -1,3 +1,18 @@
+///////////////////////////////////////////////////////////////////////////
+// Copyright © 2015 Esri. All Rights Reserved.
+//
+// Licensed under the Apache License Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+///////////////////////////////////////////////////////////////////////////
 define([
     'dojo/_base/declare',
     'dojo/_base/array',
@@ -20,7 +35,7 @@ define([
       startup: function() {
         this.inherited(arguments);
         this.setConfig(this.config);
-        on(this.includeGeoFilter, "change", lang.hitch(this, this._setFilterVisibility));
+        this.own(on(this.includeGeoFilter, "change", lang.hitch(this, this._setFilterVisibility)));
       },
       setConfig: function(config) {
         this.config = config;
@@ -87,14 +102,17 @@ define([
           for (var i = 0;i < response.fieldNames.length;i++){
             var fieldName = response.fieldNames[i];
             if (fieldName.toLowerCase() !== this.nls.batchJobCheckGroup){
-              var isdefault = "", isVisible = "", aliasName = "";
-              var filteredArr = array.filter(fieldInfos, function(item){
-                return item.dashboardFieldName === response.fieldNames[i] ;
-              });
-              if ( filteredArr.length > 0){
-                isdefault = filteredArr[0].isDefault;
-                isVisible = filteredArr[0].isVisible;
-                aliasName = filteredArr[0].alias;
+              var isdefault = "", isVisible = "", aliasName = "", filteredArr;
+              for (var j = 0; j < fieldInfos.length; j++ ){
+                if (fieldInfos[j].dashboardFieldName === response.fieldNames[i]){
+                  filteredArr = fieldInfos[j];
+                  break;
+                }
+              }
+              if ( filteredArr !== null && filteredArr !== undefined){
+                isdefault = filteredArr.isDefault;
+                isVisible = filteredArr.isVisible;
+                aliasName = filteredArr.alias;
               }
               else{
                 if (fieldInfos.length === 0){
@@ -185,7 +203,7 @@ define([
       showHideDynamicRows:function(bShowHide, container){
         var dynamicRows = query('.dynamicRow', container);
         if(dynamicRows !== undefined && dynamicRows !== null && dynamicRows.length > 0){
-          for(var i = 0; i<dynamicRows.length; i++){
+          for(var i = 0; i < dynamicRows.length; i++){
             if(bShowHide){
               dynamicRows[i].style.display = '';
             }else {
@@ -193,6 +211,6 @@ define([
             }
           }
         }
-       }
+      }
     });
   });
